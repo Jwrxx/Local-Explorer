@@ -100,11 +100,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="131.66666666666666" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Take Photo"/>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="R85-Q6-z6i" eventType="touchUpInside" id="aWa-gg-Uwf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsi-Y4-LsO">
                                         <rect key="frame" x="146.66666666666669" y="0.0" width="131.66666666666669" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Choose Photo"/>
+                                        <connections>
+                                            <action selector="choosePhoto:" destination="R85-Q6-z6i" eventType="touchUpInside" id="anT-UR-7GI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -125,6 +131,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Use My Current Location "/>
+                                <connections>
+                                    <action selector="currentLocation:" destination="R85-Q6-z6i" eventType="touchUpInside" id="fh7-5T-WSW"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Place Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="db2-yy-CXe">
                                 <rect key="frame" x="16" y="409" width="361" height="34"/>
@@ -148,7 +157,7 @@
                     <navigationItem key="navigationItem" id="DzC-Re-SEH"/>
                     <connections>
                         <outlet property="imgLocation" destination="Cch-IW-jgM" id="Ro0-4h-8yJ"/>
-                        <outlet property="txtMap" destination="5G9-2l-NLT" id="GqB-C0-0TO"/>
+                        <outlet property="mapView" destination="5G9-2l-NLT" id="DHk-tt-h1G"/>
                         <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>
                     </connections>
                 </viewController>

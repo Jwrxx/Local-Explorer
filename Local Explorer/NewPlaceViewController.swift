@@ -18,7 +18,7 @@ class NewPlaceViewController: UIViewController {
     @IBOutlet weak var txtName: UITextField!
     
     @IBOutlet weak var imgLocation: UIImageView!
-    @IBOutlet weak var txtMap: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
     
     override func viewDidLoad() {
@@ -32,6 +32,17 @@ class NewPlaceViewController: UIViewController {
     }
     
 
+    @IBAction func takePhoto(_ sender: Any) {
+        
+    }
+    
+    @IBAction func choosePhoto(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func currentLocation(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
