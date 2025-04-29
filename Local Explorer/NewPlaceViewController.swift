@@ -19,6 +19,7 @@ class NewPlaceViewController: UIViewController {
     
     @IBOutlet weak var imgLocation: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     
     
     override func viewDidLoad() {
@@ -26,8 +27,22 @@ class NewPlaceViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        if currentPlace != nil {
-            txtName.text = currentPlace!.placeName
+        if let place = currentPlace {
+            txtName.text = place.placeName
+            
+            if let imageData = place.image {
+                imgLocation.image = UIImage(data: imageData)
+            }
+            
+            let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                    mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = place.placeName
+            mapView.addAnnotation(annotation)
+            
         }
     }
     

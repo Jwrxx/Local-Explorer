@@ -158,6 +158,7 @@
                     <connections>
                         <outlet property="imgLocation" destination="Cch-IW-jgM" id="Ro0-4h-8yJ"/>
                         <outlet property="mapView" destination="5G9-2l-NLT" id="DHk-tt-h1G"/>
+                        <outlet property="sgmtEditMode" destination="EIu-xO-oPo" id="nTO-yV-pdR"/>
                         <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>
                     </connections>
                 </viewController>
