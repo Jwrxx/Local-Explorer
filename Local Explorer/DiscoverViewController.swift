@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import MapKit
+import CoreData
 
 class DiscoverViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

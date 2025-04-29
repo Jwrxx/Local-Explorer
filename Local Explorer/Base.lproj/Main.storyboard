@@ -188,6 +188,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" selectedImage="globe" catalog="system" id="b1j-w8-Fyq"/>
+                    <connections>
+                        <outlet property="mapView" destination="YL8-T2-5PV" id="Qhn-nD-Pis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHG-PQ-0CC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
