@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="-356" y="-580"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Place Table View Controller-->
         <scene sceneID="U6U-gd-Czl">
             <objects>
-                <tableViewController id="MtT-qi-xDw" sceneMemberID="viewController">
+                <tableViewController id="MtT-qi-xDw" customClass="NewPlaceTableViewController" customModule="Local_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Wcz-K9-San">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="732" y="-580"/>
         </scene>
-        <!--Add New Place-->
+        <!--New Place-->
         <scene sceneID="YV7-nL-XrB">
             <objects>
-                <viewController id="R85-Q6-z6i" sceneMemberID="viewController">
+                <viewController id="R85-Q6-z6i" customClass="NewPlaceViewController" customModule="Local_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A29-o2-313">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +135,7 @@
                         <viewLayoutGuide key="safeArea" id="3sp-R1-uad"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add New Place" selectedImage="plus.circle" catalog="system" id="uot-TM-KX5"/>
+                    <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="uot-TM-KX5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Owx-1V-VbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,7 +144,7 @@
         <!--Discover-->
         <scene sceneID="SOC-eF-GXt">
             <objects>
-                <viewController id="3dy-4A-bcq" sceneMemberID="viewController">
+                <viewController id="3dy-4A-bcq" customClass="DiscoverViewController" customModule="Local_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="elk-ld-dHY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHG-PQ-0CC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="915"/>
+            <point key="canvasLocation" x="-1103" y="1087"/>
         </scene>
     </scenes>
     <resources>
