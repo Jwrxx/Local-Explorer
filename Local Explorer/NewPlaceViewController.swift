@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class NewPlaceViewController: UIViewController {
+class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationBarDelegate, UINavigationControllerDelegate {
     
     var currentPlace: Place?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,6 +48,27 @@ class NewPlaceViewController: UIViewController {
     
 
     @IBAction func takePhoto(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+        }
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            imgLocation.contentMode = .scaleAspectFit
+            if currentPlace == nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentPlace = Place(context: context)
+            }
+            currentPlace?.image = image.jpegData(compressionQuality: 1.0)
+            imgLocation.image = image
+        }
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -57,6 +78,7 @@ class NewPlaceViewController: UIViewController {
     
     
     @IBAction func currentLocation(_ sender: Any) {
+        
     }
     /*
     // MARK: - Navigation
