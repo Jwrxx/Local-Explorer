@@ -58,6 +58,7 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             imgLocation.contentMode = .scaleAspectFit
@@ -73,7 +74,13 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func choosePhoto(_ sender: Any) {
-        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photoLibraryController = UIImagePickerController()
+            photoLibraryController.sourceType = .photoLibrary
+            photoLibraryController.delegate = self
+            photoLibraryController.allowsEditing = true
+            self.present(photoLibraryController, animated: true, completion: nil)
+        } //Need to add alert or something to check if the picture is in the library
     }
     
     
