@@ -147,6 +147,8 @@
                     <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="uot-TM-KX5"/>
                     <navigationItem key="navigationItem" id="DzC-Re-SEH"/>
                     <connections>
+                        <outlet property="imgLocation" destination="Cch-IW-jgM" id="Ro0-4h-8yJ"/>
+                        <outlet property="txtMap" destination="5G9-2l-NLT" id="GqB-C0-0TO"/>
                         <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>
                     </connections>
                 </viewController>

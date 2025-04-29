@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreData
 
 class NewPlaceViewController: UIViewController {
     
@@ -15,21 +17,18 @@ class NewPlaceViewController: UIViewController {
     
     @IBOutlet weak var txtName: UITextField!
     
+    @IBOutlet weak var imgLocation: UIImageView!
+    @IBOutlet weak var txtMap: MKMapView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        /*if currentPlace != nil {
-            txtName.txt = currentPlace!.placeName
-            txtlatitude.txt = currentPlace!.latitude
-            txtlongitude.txt = currentPlace!.longitude
-            let formatter = DateFormatter()
-            formatter.dataStyle = .short
-            if currentPlace!.date != nil {
-                
-            }
-        }*/
+        if currentPlace != nil {
+            txtName.text = currentPlace!.placeName
+        }
     }
     
 
