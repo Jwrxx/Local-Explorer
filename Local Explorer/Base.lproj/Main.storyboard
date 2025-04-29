@@ -59,6 +59,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="R85-Q6-z6i" kind="show" identifier="EditPlace" trigger="accessoryAction" id="BEQ-AX-hwY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -143,6 +146,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="uot-TM-KX5"/>
                     <navigationItem key="navigationItem" id="DzC-Re-SEH"/>
+                    <connections>
+                        <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Owx-1V-VbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,7 +184,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q3B-Qr-e0d"/>
+        <segue reference="BEQ-AX-hwY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="globe" catalog="system" width="128" height="123"/>

@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class NewPlaceTableViewController: UITableViewController {
+    
+    var places: [NSManagedObject] = []
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +23,17 @@ class NewPlaceTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditPlace" {
+            let placeController = segue.destination as? NewPlaceViewController
+            let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row
+            let selectedPlace = places[selectedRow!] as? Place
+            placeController?.currentPlace = selectedPlace!
+            
+            
+        }
     }
 
     // MARK: - Table view data source
@@ -31,15 +48,16 @@ class NewPlaceTableViewController: UITableViewController {
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

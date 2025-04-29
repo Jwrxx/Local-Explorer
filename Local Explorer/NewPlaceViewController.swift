@@ -8,11 +8,28 @@
 import UIKit
 
 class NewPlaceViewController: UIViewController {
-
+    
+    var currentPlace: Place?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    
+    @IBOutlet weak var txtName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        /*if currentPlace != nil {
+            txtName.txt = currentPlace!.placeName
+            txtlatitude.txt = currentPlace!.latitude
+            txtlongitude.txt = currentPlace!.longitude
+            let formatter = DateFormatter()
+            formatter.dataStyle = .short
+            if currentPlace!.date != nil {
+                
+            }
+        }*/
     }
     
 
