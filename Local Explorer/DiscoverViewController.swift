@@ -9,14 +9,46 @@ import UIKit
 import MapKit
 import CoreData
 
-class DiscoverViewController: UIViewController {
+class DiscoverViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        mapView.setUserTrackingMode(.follow, animated: true)
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            loadPinsFromCoreData()
+        }
+    
+    func loadPinsFromCoreData(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request: NSFetchRequest<Place> = Place.fetchRequest()
+        
+        do {
+            let fetchedPlaces = try context.fetch(request)
+            
+            mapView.removeAnnotations(mapView.annotations)
+            
+            for place in fetchedPlaces {
+                let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+                let annotation = MapPoint(latitude: place.latitude, longitude: place.longitude)
+                annotation.title = place.placeName
+                annotation.subtitle = "Lat: \(place.latitude), Long: \(place.longitude)"
+                mapView.addAnnotation(annotation)
+            }
+        } catch {
+            print("Failed to fetch places: \(error)")
+        }
+    }
+
         
         // Set user tracking mode to follow
         /* mapView.setUserTrackingMode(.follow, animated: true)
@@ -65,6 +97,5 @@ class DiscoverViewController: UIViewController {
          }
          */
         
-        
-    }
+    
 }
