@@ -20,17 +20,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="3dy-4A-bcq" kind="relationship" relationship="viewControllers" id="OUk-Ax-7gl"/>
-                        <segue destination="R85-Q6-z6i" kind="relationship" relationship="viewControllers" id="ObJ-dD-02v"/>
+                        <segue destination="LZC-fp-QLv" kind="relationship" relationship="viewControllers" id="0xp-1t-ltc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnY-Gf-AGL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1103" y="268"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--New Place-->
         <scene sceneID="DMm-7c-LNg">
             <objects>
                 <navigationController id="LZC-fp-QLv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="ZkL-6i-dXi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K7r-4c-RYI">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -90,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EIu-xO-oPo">
-                                <rect key="frame" x="147" y="59" width="99" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -100,7 +101,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvq-sS-gaE">
-                                <rect key="frame" x="0.0" y="105" width="393" height="664"/>
+                                <rect key="frame" x="0.0" y="149" width="393" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Uw3-1V-jtC">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="594"/>
@@ -241,7 +242,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ObJ-dD-02v"/>
+        <segue reference="q3B-Qr-e0d"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="globe" catalog="system" width="128" height="123"/>
