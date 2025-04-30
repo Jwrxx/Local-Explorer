@@ -165,6 +165,7 @@
                                 <constraints>
                                     <constraint firstItem="Uw3-1V-jtC" firstAttribute="leading" secondItem="YvY-RT-5sp" secondAttribute="leading" id="0Af-yD-wnf"/>
                                     <constraint firstItem="YvY-RT-5sp" firstAttribute="trailing" secondItem="Uw3-1V-jtC" secondAttribute="trailing" constant="-393" id="3KW-lc-ZTR"/>
+                                    <constraint firstItem="Uw3-1V-jtC" firstAttribute="width" secondItem="tRV-Wz-jV9" secondAttribute="width" id="IcW-RD-Mxf"/>
                                     <constraint firstItem="YvY-RT-5sp" firstAttribute="bottom" secondItem="Uw3-1V-jtC" secondAttribute="bottom" id="Wtm-w4-Jgw"/>
                                     <constraint firstItem="Uw3-1V-jtC" firstAttribute="top" secondItem="YvY-RT-5sp" secondAttribute="top" id="h2f-oa-1py"/>
                                 </constraints>
