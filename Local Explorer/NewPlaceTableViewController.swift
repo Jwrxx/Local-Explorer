@@ -14,15 +14,15 @@ class NewPlaceTableViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataFromDatabase()
         tableView.reloadData()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -41,26 +41,26 @@ class NewPlaceTableViewController: UITableViewController {
     func loadDataFromDatabase() {
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSManagedObject>(entityName: "Place")
-
+        
         do {
             places = try context.fetch(request)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return places.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath)
@@ -69,21 +69,21 @@ class NewPlaceTableViewController: UITableViewController {
         let place = places[indexPath.row] as? Place
         cell.textLabel?.text = place?.placeName
         //cell.detailTextLabel?.text = place?.locationDescription
-
+        
         // Configure the cell...
-
+        
         return cell
     }
     
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -100,30 +100,60 @@ class NewPlaceTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let selectedPlace = places[indexPath.row] as! Place
-            let name = selectedPlace.placeName ?? "Unnamed"
+        let selectedPlace = places[indexPath.row] as! Place
+        let name = selectedPlace.placeName ?? "Unnamed"
 
-            let actionHandler: (UIAlertAction) -> Void = { _ in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as? NewPlaceViewController
-                controller?.currentPlace = selectedPlace
-                self.navigationController?.pushViewController(controller!, animated: true)
+        let actionHandler: (UIAlertAction) -> Void = { _ in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            if let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as? NewPlaceViewController {
+                controller.currentPlace = selectedPlace
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                // Handle case where the controller is not found (if needed)
             }
+        }
 
+        let alertController = UIAlertController(title: "Place Selected",
+                                                message: "Selected row: \(indexPath.row) (\(name))", preferredStyle: .alert)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
+        
+        alertController.addAction(actionCancel)
+        alertController.addAction(actionDetails)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPlace = places[indexPath.row] as! Place
+        let name = selectedPlace.placeName ?? "Unnamed"
+        
+        let actionHandler: (UIAlertAction) -> Void = { _ in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            if let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as? NewPlaceViewController {
+                controller.currentPlace = selectedPlace
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                
+            }
+            
             let alertController = UIAlertController(title: "Place Selected",
                                                     message: "Selected row: \(indexPath.row) (\(name))", preferredStyle: .alert)
             let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
-
+            
             alertController.addAction(actionCancel)
             alertController.addAction(actionDetails)
             present(alertController, animated: true, completion: nil)
         }
-    }
+    }*/
+}
 
     /*
     // Override to support rearranging the table view.
