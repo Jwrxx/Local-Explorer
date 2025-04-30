@@ -8,11 +8,13 @@
 import UIKit
 import MapKit
 import CoreData
+import CoreLocation
 
-class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationBarDelegate, UINavigationControllerDelegate {
+class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationBarDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate {
     
     var currentPlace: Place?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locationManager = CLLocationManager()
     
     
     @IBOutlet weak var txtName: UITextField!
@@ -26,6 +28,10 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // Do any additional setup after loading the view.
         
