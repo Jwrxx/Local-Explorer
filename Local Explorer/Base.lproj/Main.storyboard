@@ -120,10 +120,10 @@
                                 <rect key="frame" x="0.0" y="149" width="393" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Uw3-1V-jtC">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="594"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="638.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tja-E9-Gnb">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="288.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="332.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTd-ps-BUQ">
                                                         <rect key="frame" x="46.666666666666657" y="0.0" width="300" height="200"/>
@@ -158,10 +158,18 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qk2-Ap-cPq">
+                                                        <rect key="frame" x="133.66666666666666" y="298.33333333333331" width="125.99999999999997" height="34.333333333333314"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Find Location"/>
+                                                        <connections>
+                                                            <action selector="findLocationTapped:" destination="R85-Q6-z6i" eventType="touchUpInside" id="m4q-QZ-10f"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ToJ-be-7gH">
-                                                <rect key="frame" x="0.0" y="319.33333333333326" width="393" height="274.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="363.66666666666663" width="393" height="274.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap On The Map To Select A Location !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54d-9u-jDf">
                                                         <rect key="frame" x="0.0" y="0.0" width="294.33333333333331" height="20.333333333333332"/>
@@ -178,7 +186,7 @@
                                                         <standardMapConfiguration key="preferredConfiguration"/>
                                                     </mapView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJI-RV-YkW">
-                                                        <rect key="frame" x="0.0" y="240.33333333333334" width="217.33333333333334" height="34.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="240.3333333333334" width="217.33333333333334" height="34.333333333333343"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Use My Current Location "/>
                                                         <connections>
@@ -186,6 +194,11 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ZxX-az-F7q" firstAttribute="leading" secondItem="ToJ-be-7gH" secondAttribute="leading" constant="45" id="6iM-ML-tFr"/>
+                                                    <constraint firstItem="ZxX-az-F7q" firstAttribute="centerX" secondItem="ToJ-be-7gH" secondAttribute="centerX" id="JS3-5g-hDQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZxX-az-F7q" secondAttribute="trailing" constant="45" id="s0x-bx-XoE"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>

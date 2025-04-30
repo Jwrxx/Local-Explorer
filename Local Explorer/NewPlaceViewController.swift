@@ -173,6 +173,42 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         currentPlace?.latitude = coordinate.latitude
         currentPlace?.longitude = coordinate.longitude
     }
+    
+    @IBAction func findLocationTapped(_ sender: Any) {
+        guard let locationString = txtName.text, !locationString.isEmpty else {
+            return
+        }
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(locationString) { [weak self] placemarks, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("Geocoding error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let coordinate = placemarks?.first?.location?.coordinate {
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = locationString
+                self.mapView.addAnnotation(annotation)
+                
+                let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                self.mapView.setRegion(region, animated: true)
+                
+                if self.currentPlace == nil {
+                    let context = self.appDelegate.persistentContainer.viewContext
+                    self.currentPlace = Place(context: context)
+                }
+                
+                self.currentPlace?.latitude = coordinate.latitude
+                self.currentPlace?.longitude = coordinate.longitude
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
