@@ -54,6 +54,8 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
             mapView.addAnnotation(annotation)
             
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
+        mapView.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
@@ -150,6 +152,26 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         print("Failed to get user location: \(error.localizedDescription)")
+    }
+    
+    @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
+        let locationInView = sender.location(in: mapView)
+        let coordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "Selected Location"
+        mapView.addAnnotation(annotation)
+        
+        if currentPlace == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentPlace = Place(context: context)
+        }
+        
+        currentPlace?.latitude = coordinate.latitude
+        currentPlace?.longitude = coordinate.longitude
     }
     /*
     // MARK: - Navigation
