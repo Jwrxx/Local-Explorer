@@ -19,11 +19,20 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBOutlet weak var txtName: UITextField!
     
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var imgLocation: UIImageView!
     
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
+    
+    @IBOutlet weak var takePhoto: UIButton!
+    
+    @IBOutlet weak var choosePhoto: UIButton!
+    
+    @IBOutlet weak var findLocation: UIButton!
+    
+    @IBOutlet weak var currentLocation: UIButton!
     
     
     override func viewDidLoad() {
@@ -59,6 +68,34 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
+        let textFields: [UITextField] = [txtName]
+        if sgmtEditMode.selectedSegmentIndex == 0 {
+            for textField in textFields {
+                textField.isEnabled = false
+                textField.borderStyle = UITextField.BorderStyle.none
+            }
+            //POSSIBLE ADDRESS TYPE BUTTON.isHidden = true
+            navigationItem.rightBarButtonItem = nil
+            takePhoto.isEnabled = false
+            choosePhoto.isEnabled = false
+            findLocation.isEnabled = false
+            currentLocation.isEnabled = false
+        }
+        else if sgmtEditMode.selectedSegmentIndex == 1 {
+            for textField in textFields {
+                textField.isEnabled = true
+                textField.borderStyle = UITextField.BorderStyle.roundedRect
+            }
+            //POSSIBLE ADDRESS TYPE BUTTON.isHidden = true
+            takePhoto.isEnabled = true
+            choosePhoto.isEnabled = true
+            findLocation.isEnabled = true
+            currentLocation.isEnabled = true
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,target: self, action: #selector(self.savePlace))
+        }
+    }
+    
+    /*@IBAction func changeEditMode(_ sender: Any) {
         let isEditMode = sgmtEditMode.selectedSegmentIndex == 1
         txtName.isEnabled = isEditMode
         txtName.borderStyle = isEditMode ? .roundedRect : .none
@@ -66,7 +103,7 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         navigationItem.rightBarButtonItem = isEditMode
         ? UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(savePlace))
         : nil
-    }
+    }*/
     
     @objc func savePlace(){
         if currentPlace == nil{
