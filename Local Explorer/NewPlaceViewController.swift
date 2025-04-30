@@ -114,7 +114,31 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     @IBAction func currentLocation(_ sender: Any) {
-        
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let location = locations.first {
+            let coordinate = location.coordinate
+            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+            mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "Current Location"
+            mapView.addAnnotation(annotation)
+            
+            if currentPlace ==  nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentPlace = Place(context: context)
+            }
+            currentPlace?.latitude = coordinate.latitude
+            currentPlace?.longitude = coordinate.longitude
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
+        print("Failed to get user location: \(error.localizedDescription)")
     }
     /*
     // MARK: - Navigation
