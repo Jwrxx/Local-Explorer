@@ -195,6 +195,7 @@
                     <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="uot-TM-KX5"/>
                     <navigationItem key="navigationItem" id="DzC-Re-SEH"/>
                     <connections>
+                        <outlet property="imgLocation" destination="KTd-ps-BUQ" id="wb0-Yi-F04"/>
                         <outlet property="mapView" destination="ZxX-az-F7q" id="5Ap-GK-ymp"/>
                         <outlet property="sgmtEditMode" destination="EIu-xO-oPo" id="nTO-yV-pdR"/>
                         <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>

@@ -18,6 +18,7 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var txtName: UITextField!
     
     @IBOutlet weak var mapView: MKMapView!
+    
     @IBOutlet weak var imgLocation: UIImageView!
     
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
