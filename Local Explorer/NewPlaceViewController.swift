@@ -54,7 +54,28 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-
+    @IBAction func changeEditMode(_ sender: Any) {
+        let isEditMode = sgmtEditMode.selectedSegmentIndex == 1
+        txtName.isEnabled = isEditMode
+        txtName.borderStyle = isEditMode ? .roundedRect : .none
+        
+        navigationItem.rightBarButtonItem = isEditMode
+        ? UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(savePlace))
+        : nil
+    }
+    
+    @objc func savePlace(){
+        if currentPlace == nil{
+            let context = appDelegate.persistentContainer.viewContext
+            currentPlace = Place(context: context)
+        }
+        currentPlace?.placeName = txtName.text ?? ""
+        appDelegate.saveContext()
+        
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
+    }
+    
     @IBAction func takePhoto(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraController = UIImagePickerController()

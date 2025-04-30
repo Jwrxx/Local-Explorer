@@ -95,6 +95,9 @@
                                     <segment title="View"/>
                                     <segment title="Edit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="R85-Q6-z6i" eventType="valueChanged" id="HO8-tj-v6k"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvq-sS-gaE">
                                 <rect key="frame" x="0.0" y="149" width="393" height="669"/>
