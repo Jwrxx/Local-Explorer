@@ -231,8 +231,15 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
                 annotation.coordinate = coordinate
                 annotation.title = locationString
                 self.mapView.addAnnotation(annotation)
+                // Adjust the region to zoom out
+                            let mediumZoomOutRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 100000, longitudinalMeters: 100000) // Zoom out by increasing the meters
+                            self.mapView.setRegion(mediumZoomOutRegion, animated: true)
                 
-                let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                // Adjust the region to zoom out
+                            let zoomOutRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000) // Zoom out by increasing the meters
+                            self.mapView.setRegion(zoomOutRegion, animated: true)
+                
+                let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
                 self.mapView.setRegion(region, animated: true)
                 
                 if self.currentPlace == nil {
