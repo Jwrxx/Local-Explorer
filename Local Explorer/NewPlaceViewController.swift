@@ -32,6 +32,8 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.requestLocation()
 
         // Do any additional setup after loading the view.
         
@@ -70,6 +72,11 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
             currentPlace = Place(context: context)
         }
         currentPlace?.placeName = txtName.text ?? ""
+        
+        if locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways {
+            locationManager.requestLocation()
+        }
+        
         appDelegate.saveContext()
         
         sgmtEditMode.selectedSegmentIndex = 0
@@ -114,7 +121,9 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     @IBAction func currentLocation(_ sender: Any) {
-        locationManager.requestLocation()
+        if locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways {
+            locationManager.requestLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
@@ -122,6 +131,8 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
             let coordinate = location.coordinate
             let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
+            
+            mapView.removeAnnotations(mapView.annotations)
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
