@@ -98,6 +98,33 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWasShown(_:)),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillBeHidden(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    
+    @objc func keyboardWasShown(_ notification: Notification) {
+        guard let info = notification.userInfo,
+              let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let keyboardHeight = keyboardFrame.height
+        scrollView.contentInset.bottom = keyboardHeight
+        scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight
+    }
+    
+    @objc func keyboardWillBeHidden(_ notification: Notification) {
+        scrollView.contentInset = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
+    }
+    
+    
     /*@IBAction func changeEditMode(_ sender: Any) {
         let isEditMode = sgmtEditMode.selectedSegmentIndex == 1
         txtName.isEnabled = isEditMode
