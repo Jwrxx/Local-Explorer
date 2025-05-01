@@ -109,6 +109,15 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
                                                object: nil)
     }
     
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardDidShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
     
     @objc func keyboardWasShown(_ notification: Notification) {
         guard let info = notification.userInfo,
@@ -123,6 +132,17 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         scrollView.contentInset = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardNotifications()
+    }
+
     
     
     /*@IBAction func changeEditMode(_ sender: Any) {
