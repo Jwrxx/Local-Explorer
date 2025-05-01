@@ -35,6 +35,9 @@ class NewPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var currentLocation: UIButton!
     
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

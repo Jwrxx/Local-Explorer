@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CrT-DN-Z9P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CrT-DN-Z9P">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,7 +33,7 @@
                 <navigationController id="LZC-fp-QLv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New Place" selectedImage="plus.circle" catalog="system" id="ZkL-6i-dXi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K7r-4c-RYI">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EIu-xO-oPo">
-                                <rect key="frame" x="147" y="162" width="99" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -117,11 +117,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvq-sS-gaE">
-
                                 <rect key="frame" x="0.0" y="149" width="393" height="637"/>
-
-                                <rect key="frame" x="0.0" y="208" width="393" height="527"/>
-
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Uw3-1V-jtC">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="637.33333333333337"/>
@@ -241,6 +237,7 @@
                         <outlet property="findLocation" destination="qk2-Ap-cPq" id="d3U-t6-oul"/>
                         <outlet property="imgLocation" destination="KTd-ps-BUQ" id="wb0-Yi-F04"/>
                         <outlet property="mapView" destination="ZxX-az-F7q" id="5Ap-GK-ymp"/>
+                        <outlet property="scrollView" destination="zvq-sS-gaE" id="PbT-OI-iBH"/>
                         <outlet property="sgmtEditMode" destination="EIu-xO-oPo" id="nTO-yV-pdR"/>
                         <outlet property="takePhoto" destination="YNL-mo-ctb" id="uQf-SE-5dm"/>
                         <outlet property="txtName" destination="db2-yy-CXe" id="HzC-dm-I1R"/>
@@ -259,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-T2-5PV">
-                                <rect key="frame" x="0.0" y="118" width="393" height="617"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                         </subviews>
