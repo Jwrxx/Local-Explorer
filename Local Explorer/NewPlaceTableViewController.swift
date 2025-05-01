@@ -127,6 +127,11 @@ class NewPlaceTableViewController: UITableViewController {
         alertController.addAction(actionDetails)
         present(alertController, animated: true, completion: nil)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadDataFromDatabase()
+        tableView.reloadData()
+    }
 
     
     /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
